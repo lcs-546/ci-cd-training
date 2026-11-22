@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Temperaturumrechner</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+
+  <body>
+    <main>
+      <h1>Temperatur umrechnen</h1>
+      <p>Rechne zwischen Celsius und Fahrenheit um.</p>
+
+      <form id="umrechner-form">
+        <label for="temperatur">Temperatur</label>
+        <input
+          id="temperatur"
+          name="temperatur"
+          type="number"
+          step="any"
+          value="20"
+          required
+        >
+
+        <fieldset>
+          <legend>Umrechnungsrichtung</legend>
+
+          <label>
+            <input type="radio" name="richtung" value="c-f" checked>
+            Celsius in Fahrenheit
+          </label>
+
+          <label>
+            <input type="radio" name="richtung" value="f-c">
+            Fahrenheit in Celsius
+          </label>
+        </fieldset>
+
+        <button type="submit">Umrechnen</button>
+        <p>
+          <output id="ergebnis" aria-live="polite">
+            Hier erscheint das Ergebnis.
+          </output>
+        </p>
+      </form>
+    </main>
+
+    <script type="module" src="./app.mjs"></script>
+  </body>
+</html>
