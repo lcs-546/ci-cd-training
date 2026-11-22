@@ -1,0 +1,33 @@
+name: Meine erste CI-Pipeline
+
+# Start nach einem Push, bei Pull Requests auf main und per Schaltflaeche.
+on:
+  push:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Die Pipeline darf den Projektinhalt lesen.
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Temperaturumrechner testen
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Projekt herunterladen
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Node.js vorbereiten
+        uses: actions/setup-node@v7
+        with:
+          node-version: '26'
+          package-manager-cache: false
+
+      - name: Automatische Tests ausfuehren
+        run: node --test
