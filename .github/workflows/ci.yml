@@ -31,3 +31,14 @@ jobs:
 
       - name: Automatische Tests ausfuehren
         run: node --test
+
+      - name: Website bauen
+        run: node build.mjs
+
+      - name: Website als Artefakt speichern
+        uses: actions/upload-artifact@v7
+        with:
+          name: temperaturumrechner-website
+          path: dist/
+          if-no-files-found: error
+          retention-days: 3
